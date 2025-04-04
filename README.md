@@ -1,61 +1,103 @@
-<div align="center">
-    <br/>
-    <p>
-        <img src="web/static/favicon.png" title="cobalt" alt="cobalt logo" width="100" />
-    </p>
-    <p>
-        best way to save what you love
-        <br/>
-        <a href="https://cobalt.tools">
-            cobalt.tools
-        </a>
-    </p>
-    <p>
-        <a href="https://discord.gg/pQPt8HBUPu">
-            💬 community discord server
-        </a>
-        <br/>
-        <a href="https://x.com/justusecobalt">
-            🐦 twitter
-        </a>
-        <a href="https://bsky.app/profile/cobalt.tools">
-            🦋 bluesky
-        </a>
-    </p>
-    <br/>
-</div>
+# cobalt api
+this directory includes the source code for cobalt api. it's made with [express.js](https://www.npmjs.com/package/express) and love!
 
-cobalt is a media downloader that doesn't piss you off. it's friendly, efficient, and doesn't have ads, trackers, paywalls or other nonsense.
+## running your own instance
+if you want to run your own instance for whatever purpose, [follow this guide](/docs/run-an-instance.md).
+we recommend to use docker compose unless you intend to run cobalt for developing/debugging purposes.
 
-paste the link, get the file, move on. that simple, just how it should be.
+## accessing the api
+there is currently no publicly available pre-hosted api.
+we recommend [deploying your own instance](/docs/run-an-instance.md) if you wish to use the cobalt api.
 
-### cobalt monorepo
-this monorepo includes source code for api, frontend, and related packages:
-- [api tree & readme](/api/)
-- [web tree & readme](/web/)
-- [packages tree](/packages/)
+you can read [the api documentation here](/docs/api.md).
 
-it also includes documentation in the [docs tree](/docs/):
-- [how to run a cobalt instance](/docs/run-an-instance.md)
-- [how to protect a cobalt instance](/docs/protect-an-instance.md)
-- [cobalt api instance environment variables](/docs/api-env-variables.md)
-- [cobalt api documentation](/docs/api.md)
+## supported services
+this list is not final and keeps expanding over time!
+if the desired service isn't supported yet, feel free to create an appropriate issue (or a pull request 👀).
 
-### ethics
-cobalt is a tool that makes downloading public content easier. it takes **zero liability**.
-the end user is responsible for what they download, how they use and distribute that content.
-cobalt never caches any content, it [works like a fancy proxy](/api/src/stream/).
+| service           | video + audio | only audio | only video | metadata | rich file names |
+| :--------         | :-----------: | :--------: | :--------: | :------: | :-------------: |
+| bilibili          | ✅            | ✅         | ✅         | ➖         | ➖              |
+| bluesky           | ✅            | ✅         | ✅         | ➖         | ➖              |
+| dailymotion       | ✅            | ✅         | ✅         | ✅         | ✅              |
+| instagram         | ✅            | ✅         | ✅         | ➖         | ➖              |
+| facebook          | ✅            | ❌         | ✅         | ➖         | ➖              |
+| loom              | ✅            | ❌         | ✅         | ✅         | ➖              |
+| ok.ru             | ✅            | ❌         | ✅         | ✅         | ✅              |
+| pinterest         | ✅            | ✅         | ✅         | ➖         | ➖              |
+| reddit            | ✅            | ✅         | ✅         | ❌         | ❌              |
+| rutube            | ✅            | ✅         | ✅         | ✅         | ✅              |
+| snapchat          | ✅            | ✅         | ✅         | ➖         | ➖              |
+| soundcloud        | ➖            | ✅         | ➖         | ✅         | ✅              |
+| streamable        | ✅            | ✅         | ✅         | ➖         | ➖              |
+| tiktok            | ✅            | ✅         | ✅         | ❌         | ❌              |
+| tumblr            | ✅            | ✅         | ✅         | ➖         | ➖              |
+| twitch clips      | ✅            | ✅         | ✅         | ✅         | ✅              |
+| twitter/x         | ✅            | ✅         | ✅         | ➖         | ➖              |
+| vimeo             | ✅            | ✅         | ✅         | ✅         | ✅              |
+| vk videos & clips | ✅            | ❌         | ✅         | ✅         | ✅              |
+| xiaohongshu       | ✅            | ✅         | ✅         | ➖         | ➖              |
+| youtube           | ✅            | ✅         | ✅         | ✅         | ✅              |
 
-cobalt is in no way a piracy tool and cannot be used as such.
-it can only download free & publicly accessible content.
-same content can be downloaded via dev tools of any modern web browser.
+| emoji   | meaning                 |
+| :-----: | :---------------------- |
+| ✅      | supported               |
+| ➖      | unreasonable/impossible |
+| ❌      | not supported           |
 
-### contributing
-if you're considering contributing to cobalt, first of all, thank you! check the [contribution guidelines here](/CONTRIBUTING.md) before getting started, they'll help you do your best right away.
+### additional notes or features (per service)
+| service    | notes or features                                                                                                    |
+| :--------  | :-----                                                                                                               |
+| instagram  | supports reels, photos, and videos. lets you pick what to save from multi-media posts.                               |
+| facebook   | supports public accessible videos content only.                                                                      |
+| pinterest  | supports photos, gifs, videos and stories.                                                                           |
+| reddit     | supports gifs and videos.                                                                                            |
+| snapchat   | supports spotlights and stories. lets you pick what to save from stories.                                            |
+| rutube     | supports yappy & private links.                                                                                      |
+| soundcloud | supports private links.                                                                                              |
+| tiktok     | supports videos with or without watermark, images from slideshow without watermark, and full (original) audios.      |
+| twitter/x  | lets you pick what to save from multi-media posts. may not be 100% reliable due to current management.               |
+| vimeo      | audio downloads are only available for dash.                                                                         |
+| youtube    | supports videos, music, and shorts. 8K, 4K, HDR, VR, and high FPS videos. rich metadata & dubs. h264/av1/vp9 codecs. |
 
-### thank you
-cobalt is sponsored by [royalehosting.net](https://royalehosting.net/?partner=cobalt). a part of our infrastructure is hosted on their network. we really appreciate their kindness and support!
+## license
+cobalt api code is licensed under [AGPL-3.0](LICENSE).
 
-### licenses
-for relevant licensing information, see the [api](api/README.md) and [web](web/README.md) READMEs.
-unless specified otherwise, the remainder of this repository is licensed under [AGPL-3.0](LICENSE).
+this license allows you to modify, distribute and use the code for any purpose
+as long as you:
+- give appropriate credit to the original repo when using or modifying any parts of the code,
+- provide a link to the license and indicate if changes to the code were made, and
+- release the code under the **same license**
+
+## open source acknowledgements
+### ffmpeg
+cobalt relies on ffmpeg for muxing and encoding media files. ffmpeg is absolutely spectacular and we're privileged to have an ability to use it for free, just like anyone else. we believe it should be way more recognized.
+
+you can [support ffmpeg here](https://ffmpeg.org/donations.html)!
+
+### youtube.js
+cobalt relies on **[youtube.js](https://github.com/LuanRT/YouTube.js)** for interacting with youtube's innertube api, it wouldn't have been possible without this package.
+
+you can support the developer via various methods listed on their github page!
+(linked above)
+
+### many others
+cobalt-api also depends on:
+
+- **[content-disposition-header](https://www.npmjs.com/package/content-disposition-header)** to simplify the provision of `content-disposition` headers.
+- **[cors](https://www.npmjs.com/package/cors)** to manage cross-origin resource sharing within expressjs.
+- **[dotenv](https://www.npmjs.com/package/dotenv)** to load environment variables from the `.env` file.
+- **[express](https://www.npmjs.com/package/express)** as the backbone of cobalt servers.
+- **[express-rate-limit](https://www.npmjs.com/package/express-rate-limit)** to rate limit api endpoints.
+- **[ffmpeg-static](https://www.npmjs.com/package/ffmpeg-static)** to get binaries for ffmpeg depending on the platform.
+- **[hls-parser](https://www.npmjs.com/package/hls-parser)** to parse HLS playlists according to spec (very impressive stuff).
+- **[ipaddr.js](https://www.npmjs.com/package/ipaddr.js)** to parse ip addresses (used for rate limiting).
+- **[nanoid](https://www.npmjs.com/package/nanoid)** to generate unique identifiers for each requested tunnel.
+- **[set-cookie-parser](https://www.npmjs.com/package/set-cookie-parser)** to parse cookies that cobalt receives from certain services.
+- **[undici](https://www.npmjs.com/package/undici)** for making http requests.
+- **[url-pattern](https://www.npmjs.com/package/url-pattern)** to match provided links with supported patterns.
+- **[zod](https://www.npmjs.com/package/zod)** to lock down the api request schema.
+- **[@datastructures-js/priority-queue](https://www.npmjs.com/package/@datastructures-js/priority-queue)** for sorting stream caches for future clean up (without redis).
+- **[@imput/psl](https://www.npmjs.com/package/@imput/psl)** as the domain name parser, our fork of [psl](https://www.npmjs.com/package/psl).
+
+...and many other packages that these packages rely on.
